@@ -1,0 +1,13 @@
+@CHARSET "ISO-8859-1";
+
+#title {
+	color: black;
+	background-color: yellow;
+	text-align: center;
+	font-size: 3em;
+	margin: auto;
+}
+
+#title span {
+	color: red;
+}
