@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>RobotCoding Practice</title>
+	<script src="requirejs/require.js" type="text/javascript"></script>
+	<script>
+	require.config({
+		waitSeconds: 0
+	});
+	</script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="problems/QuizMaker.js" type="text/javascript"></script>
+	<script src="problems/ProblemArray.js" type="text/javascript"></script>
+	<link href="themes/problems.css" type="text/css" rel="stylesheet"/>
+	<link href="codemirror/lib/codemirror.css" type="text/css" rel="stylesheet"/>
+	<link href="codemirror/theme/neat.css" type="text/css" rel="stylesheet"/>
+	<link href="codemirror/addon/fold/foldgutter.css" type="text/css" rel="stylesheet"/>
+	<script type="text/javascript">
+		sections = ["motor", "servo", "sensor", "logic", "loops", "mapping"];
+		count = 1;
+	</script>
+</head>
+<body>
+	<div id="nav">
+		<div id="motor" class="nav_wrap">
+			<div><button name="#motor" class="nav_link">Motor Basics</button></div>
+		</div>
+		<div id="servo" class="nav_wrap">
+			<div><button name="#servo" class="nav_link">Servo Basics</button></div>
+		</div>
+		<div id="sensor" class="nav_wrap">
+			<div><button name="#sensor" class="nav_link">Sensor Basics</button></div>
+		</div>
+		<div id="logic" class="nav_wrap">
+			<div><button name="#logic" class="nav_link">Logic Statements</button></div>
+		</div>
+		<div id="loops" class="nav_wrap">
+			<div><button name="#loops" class="nav_link">Loops</button></div>
+		</div>
+		<div id="mapping" class="nav_wrap">
+			<div><button name="#mapping" class="nav_link">Button Mapping</button></div>
+		</div>
+		<div id="home" class="nav_wrap link">
+			<a href="index.html" class="nav_link active">Back</a>
+		</div>
+	</div>
+	<script>
+	$(function() {
+		var container;
+		for(var i = 0; i < sections.length; i++) {
+			container = $("#" + sections[i]);
+			for(var j = 1; j <= problems[i].length; j++) {
+				var button = divO + ' class="subnav">' + buttonO + ' name="#' + sections[i] + j + '" class="nav_button">' + j + buttonC + divC;
+				container.append(button);
+			}
+		}
+	});
+	$('.nav_wrap').not('.link').on('click', $('#nav'), function(e){
+		e.preventDefault();
+		$('.nav_wrap').not(this).find('.subnav').removeClass('visible');
+		$(this).find('.subnav').toggleClass('visible');
+	});
+	</script>
+	<div id="base">
+		<h2>This is an unfinished demo.</h2>
+		<p>Click the nav elements to try it out.</p>
+	</div>
+	<div id="pages"></div>
+	<script type="text/javascript">
+	$(function() {
+		var container = $(pages);
+		for(var i = 0; i < sections.length; i++) {
+			for(var j = 1; j <= problems[i].length; j++) {
+				var pageDiv = divO + ' id="' + sections[i] + j + '" class="section">\n';
+				var contDiv = divO + ' id="problem' + count + '" class="content">\n';
+				pageDiv += contDiv + divC + '\n' + divC;
+				container.append(pageDiv);
+				var c = problems[i][j - 1];
+				setTimeout(window['make' + c.type](c.question, c.specs, "#problem" + count), 0);
+				count++;
+			}
+		}
+		codeBoxMaker();
+		
+		// Click listener for nav elements
+		var subNavs = document.getElementsByClassName("subnav");
+		for(var i = 0; i < subNavs.length; i++) {
+			subNavs[i].addEventListener("click", function(e) {
+				// e.target is the clicked element!
+				if(e.target && (e.target.getAttribute("class")).indexOf( "nav_button" ) > -1 ) {
+					// List item found!
+					var href = e.target.getAttribute("name");
+					var id = href.substring(1);
+					var pActive = document.getElementById(id);
+					e.preventDefault();
+					pActive.className = pActive.className + " active";
+				}
+			});	//	end click listener for nav
+		}
+
+
+		// Click listener for sub pages
+		document.getElementById("pages").addEventListener("click", function(e) {
+
+			//	Click background/overlay
+			if(e.target && (e.target.getAttribute("class")).indexOf( "section" ) > -1 ) {
+				e.target.className = "section";
+			}
+
+			//	Click close button
+			if( e.target && ( e.target.getAttribute("href") === "close" ) ) {
+				e.preventDefault();
+				e.target.parentNode.parentNode.parentNode.className = "section";
+			}
+		});	//	end click listener for overlay
+		
+		//Click listener for next button
+		$(".next").on('click', function(e) {
+			var id = $(this).parent().parent().parent().attr('id');
+			$("#" + id).parent().removeClass("active");
+			var idInt = (parseInt(id.substring(7)) + 1);
+			if(idInt >= count) {
+				idInt = 1;
+			}
+			$("#problem" + idInt).parent().addClass("active");
+		});
+	});
+	</script>
+</body>
+</html>
