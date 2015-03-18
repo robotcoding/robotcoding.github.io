@@ -49,7 +49,7 @@ body{
 }
 
 .nav_link:hover, .nav_button:hover{
-	background-color: #85c420;
+	background-color: #19A3A3;
 	text-decoration: underline;
 	cursor: pointer;
 }
@@ -69,7 +69,7 @@ body{
 }
 
 .nav_link.active{
-	background-color: #b4e664;
+	background-color: #00E6B8;
 }
 
 #base{
