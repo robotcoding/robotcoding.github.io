@@ -38,6 +38,7 @@ body{
 	font-size: 20px;
     border:none; 
 	display: inline-block;
+	height: 50px;
 	line-height: 50px;
 	padding: 0 20px;
 	color: #fff;
@@ -163,6 +164,10 @@ body{
 	text-align: center;
 }
 
+#pages form {
+	margin-top: 10px;
+}
+
 .subQuestion {
 	font-family: "Arial", sans-serif;
 	font-style: normal;
@@ -170,9 +175,19 @@ body{
 	display: inline;
 }
 
+#pages input[type="submit"], input.next {
+	width: 100px;
+	display: block;
+	float: center;
+	text-align: center;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 1.2em;
+	margin: 10px auto;
+}
+
 input.next {
 	display: none;
-	margin: 4px 0;
+	margin: 10px auto;
 }
 
 input.next.on {

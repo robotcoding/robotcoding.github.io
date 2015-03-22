@@ -1,6 +1,8 @@
-//Set of html tags
+//Set of html tags, in variables for convenience
 var pO = '<p';
 var pC = '</p>';
+var preO = '<pre';
+var preC = '</pre>';
 var ulO = '<ul';
 var ulC = '</ul>';
 var inputO = '<input';
@@ -19,15 +21,28 @@ var formC = '</form>';
 var articleO = '<article>';
 var articleC = '</article>';
 
+/**
+ * 
+ * @param question
+ * @param divID
+ * @param subtext
+ * @returns {String}
+ */
 function addQuestion(question, divID, subtext) {
 	var q = articleO + pO + ' class="question">' + question + pC;
 	if(subtext !== undefined) {
-		alert(subtext);
-		q += pO + ' class="subQuestion">' + subtext + pC;
+		q += preO + ' class="subQuestion">' + subtext + preC;
 	}
 	return q;
 }
 
+/**
+ * 
+ * @param input
+ * @param correct
+ * @param anyCaps
+ * @param divID
+ */
 function checkAnswer(input, correct, anyCaps, divID) {
 	var isCorrect = input.length == correct.length;
 	var i = 0;
@@ -49,23 +64,39 @@ function checkAnswer(input, correct, anyCaps, divID) {
 		i++;
 	}
 	
+	//If the answer is correct
 	if(isCorrect) {
 		var contentDiv = $(divID);
+		
+		//Remove 'failed' class if the user failed it before
 		if(contentDiv.attr('class').indexOf("failed") > -1) {
 			contentDiv.removeClass("failed");
 		}
+		
+		//Add on 'solved' classes and alter page buttons
 		contentDiv.addClass("solved");
 		contentDiv.find('input[type="submit"]').attr('disabled', true);
 		contentDiv.find('input.next').attr('disabled', false);
 		contentDiv.find('input.next').addClass("on");
 		var button = contentDiv.parent().attr("id");
 		$('[name="#' + button + '"]').addClass("solved");
+		
+	//If the answer is incorrect
 	} else {
 		var contentDiv = $(divID);
+		
+		//Add on 'failed' class
 		contentDiv.addClass("failed");
 	}
 }
 
+/**
+ * 
+ * @param correct
+ * @param anyCaps
+ * @param divID
+ * @returns {Boolean}
+ */
 function answerSubmitSA(correct, anyCaps, divID) {
 	var input = [];
 	var div = $(divID);
@@ -76,6 +107,11 @@ function answerSubmitSA(correct, anyCaps, divID) {
 	return false;
 }
 
+/**
+ * 
+ * @param divID
+ * @returns {Array}
+ */
 function getInputMC(divID) {
 	var input = [];
 	var allElements = document.getElementById(divID.substring(1)).getElementsByTagName('INPUT');
@@ -93,13 +129,27 @@ function getInputMC(divID) {
 	return input;
 }
 
+/**
+ * 
+ * @param correct
+ * @param anyCaps
+ * @param divID
+ * @returns {Boolean}
+ */
 function answerSubmitMC(correct, anyCaps, divID) {
 	var input = getInputMC(divID);
 	checkAnswer(input, correct, anyCaps, divID);
 	return false;
 }
 
-function makeMultipleChoice(question, specs, divID) {
+/**
+ * 
+ * @param question
+ * @param specs
+ * @param divID
+ * @param subtext
+ */
+function makeMultipleChoice(question, specs, divID, subtext) {
 	var type = specs[0];
 	var answers = specs[1];
 	var correct = specs[2];
@@ -118,7 +168,14 @@ function makeMultipleChoice(question, specs, divID) {
 	document.getElementById("f" + divID.substring(1)).onsubmit = function() {return answerSubmitMC(correct, false, divID);};
 }
 
-function makeShortAnswer(question, specs, divID) {
+/**
+ * 
+ * @param question
+ * @param specs
+ * @param divID
+ * @param subtext
+ */
+function makeShortAnswer(question, specs, divID, subtext) {
 	var correct = specs[0];
 	var anyCaps = specs[1];
 	var article = addQuestion(question, divID);
@@ -133,6 +190,13 @@ function makeShortAnswer(question, specs, divID) {
 	document.getElementById("f" + divID.substring(1)).onsubmit = function() {return answerSubmitSA(correct, anyCaps, divID);};
 }
 
+/**
+ * 
+ * @param question
+ * @param specs
+ * @param divID
+ * @param subtext
+ */
 function makeMultipleShortAnswer(question, specs, divID, subtext) {
 	var subquestions = specs[0];
 	var corrects = specs[1];
@@ -152,9 +216,16 @@ function makeMultipleShortAnswer(question, specs, divID, subtext) {
 	document.getElementById("f" + divID.substring(1)).onsubmit = function() {return answerSubmitSA(corrects, anyCaps, divID);};
 }
 
+//Used for code boxes so the page can track them
 var boxCount = 1;
 var cmAccessor = [];
 
+/**
+ * 
+ * @param filename
+ * @param text
+ * @returns {Boolean}
+ */
 function download(filename, text) {
 	  var pom = document.createElement('a');
 	  pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
@@ -163,7 +234,14 @@ function download(filename, text) {
 	  return false;
 }
 
-function makeCodeBox(question, specs, divID) {
+/**
+ * 
+ * @param question
+ * @param specs
+ * @param divID
+ * @param subtext
+ */
+function makeCodeBox(question, specs, divID, subtext) {
 	var startValue = specs[0];
 	var article = addQuestion(question, divID);
 	var div = $(divID);
@@ -175,6 +253,9 @@ function makeCodeBox(question, specs, divID) {
 	boxCount++;
 }
 
+/**
+ * 
+ */
 function codeBoxMaker() {
 	require([
 	         "codemirror/lib/codemirror", "codemirror/mode/clike/clike",

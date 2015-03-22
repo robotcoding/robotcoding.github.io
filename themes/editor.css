@@ -1,0 +1,83 @@
+@CHARSET "ISO-8859-1";
+
+body{
+	margin: 0;
+	padding: 0;
+	overflow: auto;
+}
+
+#nav, .nav_link, .subnav,
+#pages, .section, .content, .close{
+	float: center;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+#nav{
+	margin: 0 auto;
+	background-color: #666;
+	width: 100%;
+	min-width: 600px;
+	height: 51px;
+	postion: absolute;
+	line-height: 50px;
+	font-family: arial, helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 20px;
+	text-align: center;
+}
+
+.nav_wrap {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.nav_link, .nav_button {
+	background-color: #666;
+	font-size: 20px;
+    border:none; 
+	display: inline-block;
+	height: 50px;
+	line-height: 50px;
+	padding: 0 20px;
+	color: #fff;
+	text-decoration: none;
+}
+
+.nav_link:hover, .nav_button:hover{
+	background-color: #19A3A3;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.nav_link.active{
+	background-color: #00E6B8;
+}
+
+#base {
+	margin: 0px 30px;
+	display: relative;
+}
+
+.question {
+	font-family: "Arial", sans-serif;
+	font-weight: bold;
+	font-style: oblique;
+	text-align: center;
+}
+
+.small {
+	font-size: 0.7em;
+}
+
+#heading {
+	font-family: "Arial", sans-serif;
+	margin: 16px auto 5px auto;
+}
+
+.CodeMirror.cm-s-neat {
+	border-style: outset;
+	border-color: #75A3A3;
+	
+}
