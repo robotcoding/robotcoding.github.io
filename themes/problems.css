@@ -197,3 +197,9 @@ input.next.on {
 form input[type="text"] {
 	display: block;
 }
+
+.codebox, .CodeMirror.cm-s-neat {
+	border-style: outset;
+	border-color: #75A3A3;
+	
+}
