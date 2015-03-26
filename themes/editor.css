@@ -33,6 +33,10 @@ body{
 	vertical-align: top;
 }
 
+input[type="submit"] {
+	-webkit-appearance: button;
+}
+
 .nav_link, .nav_button {
 	-webkit-appearance: button;
 	background-color: #666;
