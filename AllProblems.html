@@ -38,7 +38,7 @@
 			<div><button name="#mapping" class="nav_link">Button Mapping</button></div>
 		</div>
 		<div id="home" class="nav_wrap link">
-			<a href="index.html" class="nav_link active">Back</a>
+			<a href="index.html" onclick="return confirm('Navigating from this page will delete all practice problem progress. Are you sure you want to leave this page?')" class="nav_link active">Back</a>
 		</div>
 	</div>
 	<script>
@@ -63,7 +63,7 @@
 	}); // end click listener for section headings
 	</script>
 	<div id="base">
-		<h2>This is an unfinished demo.</h2>
+		<h2>Click on the navigation bar above to open the practice problems. Progress on practice problems will be saved within the session, but if the page is refreshed or navigated away from, all progress will be lost.</h2>
 		<p>Click the nav elements to try it out.</p>
 	</div>
 	<div id="pages"></div>
