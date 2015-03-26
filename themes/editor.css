@@ -59,6 +59,16 @@ input[type="submit"] {
 	background-color: #00E6B8;
 }
 
+.subnav{
+	width: 10px;
+	display: none;
+	z-index: 1;
+}
+
+.visible{
+	display: block;
+}
+
 #base {
 	margin: 0px 30px;
 	display: relative;

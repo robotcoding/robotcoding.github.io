@@ -79,6 +79,15 @@ body{
 	padding: 20px;
 	z-index: -1;
 	position: relative;
+	font-family: "Times New Roman", Times, serif;
+}
+
+#guide {
+	padding-bottom: 20px;
+}
+
+span {
+	font-weight: bold;
 }
 
 #loadmessage.done {
