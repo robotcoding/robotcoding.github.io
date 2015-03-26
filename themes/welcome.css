@@ -18,7 +18,7 @@ body{
 	margin: 0 auto;
 	background-color: #666;
 	width: 100%;
-	min-width: 600px;
+	min-width: 800px;
 	height: 51px;
 	postion: absolute;
 	line-height: 50px;
@@ -34,16 +34,21 @@ body{
 }
 
 #logo {
-	width: 219px;
-	height: 78px;
 	margin: 0px auto;
 	text-align: center;
   	display: block;
 }
 
+#base {
+	margin: 0px auto;
+	text-align: center;
+	width: 800px;
+}
+
 #wrapper {
-  width: 100%;
-  text-align: center;
+	padding-bottom: 50px;
+  	width: 100%;
+  	text-align: center;
 }
 
 #redirections {
@@ -52,11 +57,11 @@ body{
 	display: inline-block;
 }
 
-.button {
-	padding-left: 10px;
-	padding-right: 10px;
+#logo, .button {
+	border: solid #F4F400;
 }
 
-p {
-	padding-left: 20px;
+.button {
+	margin-left: 10px;
+	margin-right: 10px;
 }

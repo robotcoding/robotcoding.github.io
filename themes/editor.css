@@ -34,6 +34,7 @@ body{
 }
 
 .nav_link, .nav_button {
+	-webkit-appearance: button;
 	background-color: #666;
 	font-size: 20px;
     border:none; 
