@@ -228,8 +228,10 @@ var cmAccessor = [];
  */
 function download(filename, text) {
 	  var pom = document.createElement('a');
+	  $('#arbitrary').append(pom);
 	  pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
 	  pom.setAttribute('download', filename);
+	  pom.target="_self" ;
 	  pom.click();
 	  return false;
 }
@@ -245,10 +247,25 @@ function makeCodeBox(question, specs, divID, subtext) {
 	var startValue = specs[0];
 	var article = addQuestion(question, divID);
 	var div = $(divID);
-	var form = formO + '>\n';
+	var form = formO + ' onsubmit="return download(this[' + "'name'" + '].value + ' + "'.c'" + ', cmAccessor['+ (boxCount - 1) +'].getValue())">\n';
 	var textArea = textAO + ' id="cAnswer' + boxCount + '" class="codebox">' + startValue + textAC;
-	form += textArea + formC;
-	article += textArea + articleC;
+	var name = "<p id='heading'>Type in the name of your file:</p><input type='text' class='codetext' name='name' value='exercise" + divID.substring(8) +"'>";
+	var filetype = inputO + ' type="radio" name="' + question + '" id="c" value=".c" checked>.c file' + inputC + inputO + ' type="radio" name="' + question + '" id="h" value=".h">.h file' + inputC;
+	var download = inputO + ' type="submit" value="Download">'
+	form += textArea + name + filetype + download + formC;
+	article += form + articleC;
+	div.append(article);
+	boxCount++;
+}
+
+/**
+ * 
+ * @param divID
+ */
+function makeCodeBoxCE(divID) {
+	var div = $(divID);
+	var textArea = textAO + ' id="cAnswer' + boxCount + '" class="codebox">' + textAC;
+	var article = articleO + textArea + articleC;
 	div.append(article);
 	boxCount++;
 }

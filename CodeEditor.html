@@ -15,7 +15,7 @@
 	</script>
 </head>
 <body>
-
+	<div id="arbitrary"></div>
 	<form onsubmit="return download(this['name'].value + suffix, cmAccessor[0].getValue())">
 		<div id="nav">
 			<div id="download" class="nav_wrap">
@@ -31,7 +31,7 @@
 		<div id="base">
 			<p class="question">To insert code from existing files, open a RobotC file in an IDE or simple word processor and copy and paste the desired code.</p>
 			<div id="code"></div>
-			<script>makeCodeBox("", [""], '#code'); codeBoxMaker()</script>
+			<script>makeCodeBoxCE('#code'); codeBoxMaker()</script>
 			<p class="question small">On Windows, the code will not be correctly formatted in Notepad, but will be correctly formatted in Wordpad.</p>
 			<p id="heading">Type in the name of your file:</p>
 			<input type="text" id="codetext" name="name" value="robotcodingbox">

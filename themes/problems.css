@@ -6,6 +6,10 @@ body{
 	overflow: auto;
 }
 
+#arbitrary {
+	display: none;
+}
+
 #nav, .nav_link, .subnav,
 #pages, .section, .content, .close{
 	float: center;
@@ -90,8 +94,9 @@ span {
 	font-weight: bold;
 }
 
-#loadmessage.done {
-	display: none;
+h4 {
+	z-index: 1;
+	position: absolute;
 }
 
 .section {
@@ -205,6 +210,10 @@ input.next.on {
 
 form input[type="text"] {
 	display: block;
+}
+
+.codetext, #c, #h {
+	display: inline;
 }
 
 .codebox, .CodeMirror.cm-s-neat {
