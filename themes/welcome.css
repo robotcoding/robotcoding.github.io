@@ -46,6 +46,10 @@ body{
 	font-family: "Times New Roman", Times, serif;
 }
 
+#base a {
+	text-decoration: none;
+}
+
 #wrapper {
 	padding-bottom: 50px;
   	width: 100%;
@@ -54,6 +58,12 @@ body{
 
 #subtitle {
 	padding-bottom: 10px;
+}
+
+#fine_print {
+	font-size: 0.65em;
+	padding-top: 10px;
+	color: #A3A3CC;
 }
 
 #redirections {

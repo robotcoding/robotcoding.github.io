@@ -78,12 +78,16 @@ body{
 }
 
 #base{
-	width: 800px;
+	width: 850px;
 	margin: 0 auto;
 	padding: 20px;
 	z-index: -1;
 	position: relative;
 	font-family: "Times New Roman", Times, serif;
+}
+
+#base a {
+	text-decoration: none;
 }
 
 #guide {

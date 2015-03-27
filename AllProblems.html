@@ -90,33 +90,30 @@
 		//Called at the end to make CodeMirror instances
 		codeBoxMaker();
 		
-		// Click listener for nav elements
+		//Click listener for nav elements
 		$(".subnav").on("click", function(e) {
-			// e.target is the clicked element!
-			if(e.target && (e.target.getAttribute("class")).indexOf( "nav_button" ) > -1 ) {
-				// List item found!
-				var href = e.target.getAttribute("name");
-				var id = href.substring(1);
+			//If the clicked element is a navigation button
+			if(e.target && $(e.target).hasClass("nav_button")) {
+				//List item found!
+				var id = e.target.getAttribute("name").substring(1);
 				e.preventDefault();
 				$("#" + id).addClass("active");
 			}
-		});	//	end click listener for nav
+		});	//end click listener for nav
 
 
-		// Click listener for sub pages
+		//Click listener for sub pages
 		$("#pages").on("click", function(e) {
-
-			//	Click background/overlay
-			if(e.target && (e.target.getAttribute("class")).indexOf( "section" ) > -1 ) {
+			//Click background/overlay
+			if(e.target && $(e.target).hasClass("section")) {
 				e.target.className = "section";
 			}
-
-			//	Click close button
+			//Click close button
 			if( e.target && ( e.target.getAttribute("href") === "close" ) ) {
 				e.preventDefault();
 				e.target.parentNode.parentNode.parentNode.className = "section";
 			}
-		});	//	end click listener for overlay
+		});	//end click listener for overlay
 		
 		// Click listener for next button
 		$(".next").on('click', function(e) {

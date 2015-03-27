@@ -252,10 +252,9 @@ function makeCodeBox(question, specs, divID, subtext) {
 	var div = $(divID);
 	var form = formO + ' onsubmit="return download(this[' + "'name'" + '].value + ' + "'.c'" + ', cmAccessor['+ (boxCount - 1) +'].getValue())">\n';
 	var textArea = textAO + ' id="cAnswer' + boxCount + '" class="codebox">' + startValue + textAC;
-	var name = "<p id='heading'>Type in the name of your file:</p><input type='text' class='codetext' name='name' value='exercise" + divID.substring(8) +"'>";
-	var filetype = inputO + ' type="radio" name="' + question + '" id="c" value=".c" checked>.c file' + inputC + inputO + ' type="radio" name="' + question + '" id="h" value=".h">.h file' + inputC;
+	var name = "<p id='heading'>Type in the name of your .c file:</p><input type='text' class='codetext' name='name' value='exercise" + divID.substring(8) +"'>";
 	var download = inputO + ' type="submit" value="Download">'
-	form += textArea + name + filetype + download + formC;
+	form += textArea + name + download + formC;
 	article += form + articleC;
 	div.append(article);
 	boxCount++;
