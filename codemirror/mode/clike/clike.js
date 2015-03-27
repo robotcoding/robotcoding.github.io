@@ -494,7 +494,10 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
 			  "while word"),
 	  blockKeywords: words("case default do else enum for if struct " +
 			  "switch task union while"),
-	  builtin: words("wait1Msec wait10Msec StartTask StopTask StopAllTasks"),
+	  builtin: words("wait1Msec wait10Msec StartTask StopTask StopAllTasks tSensors TSounds TSynchedMotors TTimers " +
+			  "ServoValue SensorValue SensorRaw nMotorEncoder ClearTimer time1 time10 time100 #ifndef #ifdef #define " +
+			  "TSreadState LSvalRaw LSvalNorm HTCS2readColor HTCS2readColorIndex HTIRS2readACDir HTANGreadAngle HTANGreadAccumulatedAngle " +
+			  "HTANGreadRPM USreadDist HTEOPDreadRaw HTEOPDreadProcessed HTMAGreadRaw HTMAGreadVal HTGYROreadRot"),
 	  atoms: words("true false null NULL"),
 	  hooks: {"#": cppHook},
 	  modeProps: {fold: ["brace", "include"]}
