@@ -232,7 +232,10 @@ function download(filename, text) {
 	  pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
 	  pom.setAttribute('download', filename);
 	  pom.target="_self" ;
-	  pom.click();
+	  var clk = document.createEvent("MouseEvent");
+	  clk.initEvent("click", true, true);
+	  pom.dispatchEvent(clk);
+	  $("#arbitrary").empty();
 	  return false;
 }
 
